@@ -93,10 +93,10 @@ const game = {
 	},
 
 	battle: function(player1, player2) {
-		if (player1.damage > player2.damage){
+		if (player1.hand[0].damage > player2.hand[0].damage){
 			player1.points++;
 		}
-		else if (player2.damage > player1.damage){
+		else if (player2.hand[0].damage > player1.hand[0].damage){
 			player2.points++;
 		}
 		this.displayStats(this.eggbert, this.computer);

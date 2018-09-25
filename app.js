@@ -105,6 +105,7 @@ const game = {
 	},
 
 	determineRoundWinner: function(player1,player2) {
+		console.log(`${player1.name} had ${player1.points} points. ${player2.name} had ${player2.points} points. Therefore: `);
 		if (player1.points > player2.points){
 			player1.roundsWon++;
 			console.log(`${player1.name} won! ${player2.name} sucks`);
@@ -117,8 +118,9 @@ const game = {
 			console.log('It was a tie!');
 		}
 	},
-
 	playRound: function(player1, player2) {
+		console.log(`The cards in ${player1.name}\'s hand are: \n${JSON.stringify(player1.hand)}`); 
+		console.log(`The cards in ${player2.name}\'s hand are: \n${JSON.stringify(player2.hand)}`);
 		while((player1.hand.length > 0) && (player2.hand.length > 0)){
 			this.battle(player1, player2);
 		}
@@ -128,6 +130,7 @@ const game = {
 	},
 
 	determineGameWinner: function(player1, player2) {
+		console.log(`${player1.name} won ${player1.roundsWon} and ${player2.name} won ${player2.roundsWon} so:`);
 		if (player1.roundsWon > player2.roundsWon){
 			console.log(`${player1.name} won the game! ${player2.name} sucks!`);
 		}
@@ -147,7 +150,6 @@ const game = {
 	startGame: function() {
 		while((this.sizeOfHand*2) <= this.deck.length){
 			this.playGame(this.eggbert, this.computer);
-			console.log(this.deck);
 		}
 		console.log('Out of Cards to play with, Game Over!');
 		this.determineGameWinner(this.eggbert, this.computer);
